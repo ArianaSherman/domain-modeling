@@ -15,5 +15,26 @@ CREATE TABLE students (
 );
 
 -- Create the rest of the tables
+CREATE TABLE teachers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name TEXT,
+  last_name TEXT,
+  bio TEXT
+);
+
+CREATE TABLE courses (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  description TEXT
+);
+
+CREATE TABLE sections (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  time TEXT,
+  course_id INTEGER NOT NULL,           -- Foreign key to courses table
+  teacher_id INTEGER NOT NULL,          -- Foreign key to teachers table
+  FOREIGN KEY (course_id) REFERENCES courses(id), -- Define foreign key for course_id
+  FOREIGN KEY (teacher_id) REFERENCES teachers(id) -- Define foreign key for teacher_id
+);
 
 
